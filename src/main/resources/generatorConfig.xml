@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+
+    <context id="default" targetRuntime="MyBatis3">
+
+
+        <commentGenerator>
+            <property name="suppressDate" value="true" />
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 (默认) -->
+            <property name="suppressAllComments" value="true" />
+            <property name="addRemarkComments" value="true" />
+        </commentGenerator>
+
+        <!-- jdbc的数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/demo" userId="root"
+                        password="llzz1761">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 用于定义Java模型生成器的属性。targetPackage：生成的实体类所在的包；targetProject：生成的实体类所在的项目和源文件夹 -->
+        <javaModelGenerator
+                targetPackage="entity"
+                targetProject=".\src\main\java\com\example">
+            <!-- 针对数据库的一个配置，是否把 schema 作为字包名 默认false -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 是否对modal添加构造函数， 默认false -->
+            <property name="constructorBased" value="false" />
+            <!-- 是否清理从数据库中查询出的字符串左右两边的空白字符，默认false -->
+            <property name="trimStrings" value="true" />
+            <!-- 建立modal对象是否不可改变 即生成的modal对象不会有setter方法，只有构造方法，默认false -->
+            <property name="immutable" value="false" />
+        </javaModelGenerator>
+
+        <!-- 用于定义SQL映射生成器的属性。targetPackage 和 targetProject：生成的 mapper 文件的包和位置 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject=".\src\main\resources">
+            <!-- 针对数据库的一个配置，是否把 schema 作为字包名，默认false -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- targetPackage 和 targetProject：生成的 interface 文件的包和位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="dao"
+                             targetProject=".\src\main\java\com\example">
+            <!-- 针对 oracle 数据库的一个配置，是否把 schema 作为字包名 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写 -->
+        <table tableName="user" domainObjectName="user" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table tableName="article" domainObjectName="article" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table tableName="reply" domainObjectName="reply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+        <table tableName="jurisdiction" domainObjectName="jurisdiction" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
+
+    </context>
+
+</generatorConfiguration>

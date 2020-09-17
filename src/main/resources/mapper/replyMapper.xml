@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.replyMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.reply">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="commentator_id" jdbcType="VARCHAR" property="commentatorId" />
+    <result column="article_id" jdbcType="VARCHAR" property="articleId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="reply_time" jdbcType="TIMESTAMP" property="replyTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, commentator_id, article_id, content, reply_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from reply
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from reply
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.reply">
+    insert into reply (id, commentator_id, article_id, 
+      content, reply_time)
+    values (#{id,jdbcType=VARCHAR}, #{commentatorId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{replyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.reply">
+    insert into reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="commentatorId != null">
+        commentator_id,
+      </if>
+      <if test="articleId != null">
+        article_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="replyTime != null">
+        reply_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="commentatorId != null">
+        #{commentatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleId != null">
+        #{articleId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null">
+        #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.reply">
+    update reply
+    <set>
+      <if test="commentatorId != null">
+        commentator_id = #{commentatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="articleId != null">
+        article_id = #{articleId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="replyTime != null">
+        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.reply">
+    update reply
+    set commentator_id = #{commentatorId,jdbcType=VARCHAR},
+      article_id = #{articleId,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

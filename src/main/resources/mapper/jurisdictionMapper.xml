@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.jurisdictionMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.jurisdiction">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="levelType" jdbcType="INTEGER" property="leveltype" />
+    <result column="plateType" jdbcType="VARCHAR" property="platetype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, levelType, plateType
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jurisdiction
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from jurisdiction
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.jurisdiction">
+    insert into jurisdiction (id, user_id, levelType, 
+      plateType)
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{leveltype,jdbcType=INTEGER}, 
+      #{platetype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.jurisdiction">
+    insert into jurisdiction
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="leveltype != null">
+        levelType,
+      </if>
+      <if test="platetype != null">
+        plateType,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="leveltype != null">
+        #{leveltype,jdbcType=INTEGER},
+      </if>
+      <if test="platetype != null">
+        #{platetype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.jurisdiction">
+    update jurisdiction
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="leveltype != null">
+        levelType = #{leveltype,jdbcType=INTEGER},
+      </if>
+      <if test="platetype != null">
+        plateType = #{platetype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.jurisdiction">
+    update jurisdiction
+    set user_id = #{userId,jdbcType=VARCHAR},
+      levelType = #{leveltype,jdbcType=INTEGER},
+      plateType = #{platetype,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
