@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.commentsMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.comments">
+    <id column="commentID" jdbcType="VARCHAR" property="commentid" />
+    <result column="articleID" jdbcType="VARCHAR" property="articleid" />
+    <result column="userID" jdbcType="VARCHAR" property="userid" />
+    <result column="commentTime" jdbcType="TIMESTAMP" property="commenttime" />
+    <result column="commentAudio" jdbcType="VARCHAR" property="commentaudio" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.entity.comments">
+    <result column="commentText" jdbcType="LONGVARCHAR" property="commenttext" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    commentID, articleID, userID, commentTime, commentAudio
+  </sql>
+  <sql id="Blob_Column_List">
+    commentText
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from comments
+    where commentID = #{commentid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from comments
+    where commentID = #{commentid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.comments">
+    insert into comments (commentID, articleID, userID, 
+      commentTime, commentAudio, commentText
+      )
+    values (#{commentid,jdbcType=VARCHAR}, #{articleid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
+      #{commenttime,jdbcType=TIMESTAMP}, #{commentaudio,jdbcType=VARCHAR}, #{commenttext,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.comments">
+    insert into comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentid != null">
+        commentID,
+      </if>
+      <if test="articleid != null">
+        articleID,
+      </if>
+      <if test="userid != null">
+        userID,
+      </if>
+      <if test="commenttime != null">
+        commentTime,
+      </if>
+      <if test="commentaudio != null">
+        commentAudio,
+      </if>
+      <if test="commenttext != null">
+        commentText,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentid != null">
+        #{commentid,jdbcType=VARCHAR},
+      </if>
+      <if test="articleid != null">
+        #{articleid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null">
+        #{commenttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentaudio != null">
+        #{commentaudio,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttext != null">
+        #{commenttext,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.comments">
+    update comments
+    <set>
+      <if test="articleid != null">
+        articleID = #{articleid,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userID = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttime != null">
+        commentTime = #{commenttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentaudio != null">
+        commentAudio = #{commentaudio,jdbcType=VARCHAR},
+      </if>
+      <if test="commenttext != null">
+        commentText = #{commenttext,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where commentID = #{commentid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.entity.comments">
+    update comments
+    set articleID = #{articleid,jdbcType=VARCHAR},
+      userID = #{userid,jdbcType=VARCHAR},
+      commentTime = #{commenttime,jdbcType=TIMESTAMP},
+      commentAudio = #{commentaudio,jdbcType=VARCHAR},
+      commentText = #{commenttext,jdbcType=LONGVARCHAR}
+    where commentID = #{commentid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.comments">
+    update comments
+    set articleID = #{articleid,jdbcType=VARCHAR},
+      userID = #{userid,jdbcType=VARCHAR},
+      commentTime = #{commenttime,jdbcType=TIMESTAMP},
+      commentAudio = #{commentaudio,jdbcType=VARCHAR}
+    where commentID = #{commentid,jdbcType=VARCHAR}
+  </update>
+</mapper>

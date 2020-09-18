@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.audioConfigMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.audioConfig">
+    <result column="userID" jdbcType="VARCHAR" property="userid" />
+    <result column="auSetVol" jdbcType="INTEGER" property="ausetvol" />
+    <result column="auSetVoiPer" jdbcType="INTEGER" property="ausetvoiper" />
+    <result column="auSetSpd" jdbcType="INTEGER" property="ausetspd" />
+    <result column="auSetPit" jdbcType="INTEGER" property="ausetpit" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.entity.audioConfig">
+    insert into audio_config (userID, auSetVol, auSetVoiPer, 
+      auSetSpd, auSetPit)
+    values (#{userid,jdbcType=VARCHAR}, #{ausetvol,jdbcType=INTEGER}, #{ausetvoiper,jdbcType=INTEGER}, 
+      #{ausetspd,jdbcType=INTEGER}, #{ausetpit,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.audioConfig">
+    insert into audio_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userID,
+      </if>
+      <if test="ausetvol != null">
+        auSetVol,
+      </if>
+      <if test="ausetvoiper != null">
+        auSetVoiPer,
+      </if>
+      <if test="ausetspd != null">
+        auSetSpd,
+      </if>
+      <if test="ausetpit != null">
+        auSetPit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="ausetvol != null">
+        #{ausetvol,jdbcType=INTEGER},
+      </if>
+      <if test="ausetvoiper != null">
+        #{ausetvoiper,jdbcType=INTEGER},
+      </if>
+      <if test="ausetspd != null">
+        #{ausetspd,jdbcType=INTEGER},
+      </if>
+      <if test="ausetpit != null">
+        #{ausetpit,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
