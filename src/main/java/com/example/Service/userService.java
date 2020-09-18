@@ -2,12 +2,13 @@ package com.example.Service;
 
 import com.example.dto.JsonResult;
 import com.example.dto.currentPage;
+import com.example.dto.userQueryDTO;
 import com.example.entity.user;
 
 
 public interface userService {
 
-        int deleteByPrimaryKey(String id);
+        int deleteByPrimaryKey(String[] ids);
 
         int insert(user record);
 
@@ -19,6 +20,6 @@ public interface userService {
 
         int updateByPrimaryKey(user record);
 
-        JsonResult getAllUser(currentPage currentPage);
+        JsonResult getUserList(userQueryDTO record);
 
 }

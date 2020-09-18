@@ -1,42 +1,47 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class user {
-    private String userid;
 
-    private String username;
+    private String userID;
+
+    private String userName;
 
     private String password;
 
-    private Integer regage;
+    private int regAge;
 
-    private String regsex;
+    private Integer regSex;
 
-    private String regemail;
+    private String regPhoto;
 
-    private String regphoto;
+    private String regEmail;
 
-    private String admin;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:SS",timezone = "GMT+8")
+    private Date regTime;
 
-    private Date regtime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:SS",timezone = "GMT+8")
+    private Date loginTime;
 
-    private Date logintime;
+    private Integer admin;
 
-    public String getUserid() {
-        return userid;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid == null ? null : userid.trim();
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -44,62 +49,62 @@ public class user {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
-    public Integer getRegage() {
-        return regage;
+    public int getRegAge() {
+        return regAge;
     }
 
-    public void setRegage(Integer regage) {
-        this.regage = regage;
+    public void setRegAge(int regAge) {
+        this.regAge = regAge;
     }
 
-    public String getRegsex() {
-        return regsex;
+    public Integer getRegSex() {
+        return regSex;
     }
 
-    public void setRegsex(String regsex) {
-        this.regsex = regsex == null ? null : regsex.trim();
+    public void setRegSex(Integer regSex) {
+        this.regSex = regSex;
     }
 
-    public String getRegemail() {
-        return regemail;
+    public String getRegPhoto() {
+        return regPhoto;
     }
 
-    public void setRegemail(String regemail) {
-        this.regemail = regemail == null ? null : regemail.trim();
+    public void setRegPhoto(String regPhoto) {
+        this.regPhoto = regPhoto;
     }
 
-    public String getRegphoto() {
-        return regphoto;
+    public String getRegEmail() {
+        return regEmail;
     }
 
-    public void setRegphoto(String regphoto) {
-        this.regphoto = regphoto == null ? null : regphoto.trim();
+    public void setRegEmail(String regEmail) {
+        this.regEmail = regEmail;
     }
 
-    public String getAdmin() {
+    public Date getRegTime() {
+        return regTime;
+    }
+
+    public void setRegTime(Date regTime) {
+        this.regTime = regTime;
+    }
+
+    public Date getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(Date loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public Integer getAdmin() {
         return admin;
     }
 
-    public void setAdmin(String admin) {
-        this.admin = admin == null ? null : admin.trim();
-    }
-
-    public Date getRegtime() {
-        return regtime;
-    }
-
-    public void setRegtime(Date regtime) {
-        this.regtime = regtime;
-    }
-
-    public Date getLogintime() {
-        return logintime;
-    }
-
-    public void setLogintime(Date logintime) {
-        this.logintime = logintime;
+    public void setAdmin(Integer admin) {
+        this.admin = admin;
     }
 }
