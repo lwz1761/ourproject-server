@@ -5,7 +5,6 @@ import com.example.dto.currentPage;
 import com.example.entity.user;
 
 
-
 public interface userService {
 
         int deleteByPrimaryKey(String id);

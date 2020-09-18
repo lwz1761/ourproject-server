@@ -2,132 +2,151 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.dao.userMapper">
   <resultMap id="BaseResultMap" type="com.example.entity.user">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="account" jdbcType="VARCHAR" property="account" />
+    <id column="userID" jdbcType="VARCHAR" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="Nickname" jdbcType="VARCHAR" property="nickname" />
-    <result column="HeadUrl" jdbcType="VARCHAR" property="headurl" />
-    <result column="sex" jdbcType="INTEGER" property="sex" />
-    <result column="registrationTime" jdbcType="TIMESTAMP" property="registrationtime" />
-    <result column="userType" jdbcType="INTEGER" property="usertype" />
+    <result column="regAge" jdbcType="INTEGER" property="regage" />
+    <result column="regSex" jdbcType="VARCHAR" property="regsex" />
+    <result column="regEmail" jdbcType="VARCHAR" property="regemail" />
+    <result column="regPhoto" jdbcType="VARCHAR" property="regphoto" />
+    <result column="admin" jdbcType="VARCHAR" property="admin" />
+    <result column="regTime" jdbcType="TIMESTAMP" property="regtime" />
+    <result column="loginTime" jdbcType="TIMESTAMP" property="logintime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, account, password, Nickname, HeadUrl, sex, registrationTime, userType
+    userID, userName, password, regAge, regSex, regEmail, regPhoto, admin, regTime, loginTime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=VARCHAR}
+    where userID = #{userid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
-    where id = #{id,jdbcType=VARCHAR}
+    where userID = #{userid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.entity.user">
-    insert into user (id, account, password, 
-      Nickname, HeadUrl, sex, 
-      registrationTime, userType)
-    values (#{id,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{nickname,jdbcType=VARCHAR}, #{headurl,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
-      #{registrationtime,jdbcType=TIMESTAMP}, #{usertype,jdbcType=INTEGER})
+    insert into user (userID, userName, password, 
+      regAge, regSex, regEmail, 
+      regPhoto, admin, regTime, 
+      loginTime)
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{regage,jdbcType=INTEGER}, #{regsex,jdbcType=VARCHAR}, #{regemail,jdbcType=VARCHAR}, 
+      #{regphoto,jdbcType=VARCHAR}, #{admin,jdbcType=VARCHAR}, #{regtime,jdbcType=TIMESTAMP}, 
+      #{logintime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.entity.user">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
+      <if test="userid != null">
+        userID,
       </if>
-      <if test="account != null">
-        account,
+      <if test="username != null">
+        userName,
       </if>
       <if test="password != null">
         password,
       </if>
-      <if test="nickname != null">
-        Nickname,
+      <if test="regage != null">
+        regAge,
       </if>
-      <if test="headurl != null">
-        HeadUrl,
+      <if test="regsex != null">
+        regSex,
       </if>
-      <if test="sex != null">
-        sex,
+      <if test="regemail != null">
+        regEmail,
       </if>
-      <if test="registrationtime != null">
-        registrationTime,
+      <if test="regphoto != null">
+        regPhoto,
       </if>
-      <if test="usertype != null">
-        userType,
+      <if test="admin != null">
+        admin,
+      </if>
+      <if test="regtime != null">
+        regTime,
+      </if>
+      <if test="logintime != null">
+        loginTime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=VARCHAR},
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
       </if>
-      <if test="account != null">
-        #{account,jdbcType=VARCHAR},
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="nickname != null">
-        #{nickname,jdbcType=VARCHAR},
+      <if test="regage != null">
+        #{regage,jdbcType=INTEGER},
       </if>
-      <if test="headurl != null">
-        #{headurl,jdbcType=VARCHAR},
+      <if test="regsex != null">
+        #{regsex,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
-        #{sex,jdbcType=INTEGER},
+      <if test="regemail != null">
+        #{regemail,jdbcType=VARCHAR},
       </if>
-      <if test="registrationtime != null">
-        #{registrationtime,jdbcType=TIMESTAMP},
+      <if test="regphoto != null">
+        #{regphoto,jdbcType=VARCHAR},
       </if>
-      <if test="usertype != null">
-        #{usertype,jdbcType=INTEGER},
+      <if test="admin != null">
+        #{admin,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null">
+        #{regtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logintime != null">
+        #{logintime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.user">
     update user
     <set>
-      <if test="account != null">
-        account = #{account,jdbcType=VARCHAR},
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
       </if>
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="nickname != null">
-        Nickname = #{nickname,jdbcType=VARCHAR},
+      <if test="regage != null">
+        regAge = #{regage,jdbcType=INTEGER},
       </if>
-      <if test="headurl != null">
-        HeadUrl = #{headurl,jdbcType=VARCHAR},
+      <if test="regsex != null">
+        regSex = #{regsex,jdbcType=VARCHAR},
       </if>
-      <if test="sex != null">
-        sex = #{sex,jdbcType=INTEGER},
+      <if test="regemail != null">
+        regEmail = #{regemail,jdbcType=VARCHAR},
       </if>
-      <if test="registrationtime != null">
-        registrationTime = #{registrationtime,jdbcType=TIMESTAMP},
+      <if test="regphoto != null">
+        regPhoto = #{regphoto,jdbcType=VARCHAR},
       </if>
-      <if test="usertype != null">
-        userType = #{usertype,jdbcType=INTEGER},
+      <if test="admin != null">
+        admin = #{admin,jdbcType=VARCHAR},
+      </if>
+      <if test="regtime != null">
+        regTime = #{regtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logintime != null">
+        loginTime = #{logintime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=VARCHAR}
+    where userID = #{userid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.entity.user">
     update user
-    set account = #{account,jdbcType=VARCHAR},
+    set userName = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      Nickname = #{nickname,jdbcType=VARCHAR},
-      HeadUrl = #{headurl,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=INTEGER},
-      registrationTime = #{registrationtime,jdbcType=TIMESTAMP},
-      userType = #{usertype,jdbcType=INTEGER}
-    where id = #{id,jdbcType=VARCHAR}
+      regAge = #{regage,jdbcType=INTEGER},
+      regSex = #{regsex,jdbcType=VARCHAR},
+      regEmail = #{regemail,jdbcType=VARCHAR},
+      regPhoto = #{regphoto,jdbcType=VARCHAR},
+      admin = #{admin,jdbcType=VARCHAR},
+      regTime = #{regtime,jdbcType=TIMESTAMP},
+      loginTime = #{logintime,jdbcType=TIMESTAMP}
+    where userID = #{userid,jdbcType=VARCHAR}
   </update>
-  <select id="getAllUser" parameterType="com.example.dto.currentPage"  resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from user
-  </select>
 </mapper>
