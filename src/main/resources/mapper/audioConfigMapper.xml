@@ -8,6 +8,19 @@
     <result column="auSetSpd" jdbcType="INTEGER" property="ausetspd" />
     <result column="auSetPit" jdbcType="INTEGER" property="ausetpit" />
   </resultMap>
+  <select id="getConfigById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select userID, auSetVol, auSetVoiPer,
+      auSetSpd, auSetPit form audio_config
+      where userId = #{userid,jdbcType = VARCHAR}
+  </select>
+  <update id="setConfigById" parameterType="com.example.entity.audioConfig">
+    update audio_config set
+    userID = #{userid,jdbcType=VARCHAR},
+    auSetVol = #{ausetvol,jdbcType=INTEGER},
+    auSetVoiPer = #{ausetvoiper,jdbcType=INTEGER},
+    auSetSpd =  #{ausetspd,jdbcType=INTEGER},
+    auSetPit =  #{ausetpit,jdbcType=INTEGER}
+  </update>
   <insert id="insert" parameterType="com.example.entity.audioConfig">
     insert into audio_config (userID, auSetVol, auSetVoiPer, 
       auSetSpd, auSetPit)
