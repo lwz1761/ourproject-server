@@ -1,11 +1,9 @@
-package com.example.dao;
+package com.example.Service;
 
 import com.example.entity.comments;
-import org.apache.ibatis.annotations.Mapper;
 
+public interface commentsService {
 
-@Mapper
-public interface commentsMapper {
     int deleteByPrimaryKey(String commentid);
 
     int insert(comments record);
