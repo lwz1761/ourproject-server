@@ -10,16 +10,18 @@
   </resultMap>
   <select id="getConfigById" parameterType="java.lang.String" resultMap="BaseResultMap">
     select userID, auSetVol, auSetVoiPer,
-      auSetSpd, auSetPit form audio_config
+      auSetSpd, auSetPit
+      from audio_config
       where userId = #{userid,jdbcType = VARCHAR}
   </select>
   <update id="setConfigById" parameterType="com.example.entity.audioConfig">
-    update audio_config set
-    userID = #{userid,jdbcType=VARCHAR},
+    update audio_config
+    set
     auSetVol = #{ausetvol,jdbcType=INTEGER},
     auSetVoiPer = #{ausetvoiper,jdbcType=INTEGER},
     auSetSpd =  #{ausetspd,jdbcType=INTEGER},
     auSetPit =  #{ausetpit,jdbcType=INTEGER}
+    where userID = #{userid,jdbcType=VARCHAR}
   </update>
   <insert id="insert" parameterType="com.example.entity.audioConfig">
     insert into audio_config (userID, auSetVol, auSetVoiPer, 
