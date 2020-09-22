@@ -4,6 +4,8 @@ package com.example.controller;
 
 import com.example.Service.audioConfigService;
 import com.example.Service.commentsService;
+import com.example.dto.JsonResult;
+import com.example.dto.currentPage;
 import com.example.entity.audioConfig;
 import com.example.entity.comments;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,14 @@ public class myController {
     public int updateComments(@Validated @RequestBody comments record){
 
         return commentsService.updateByPrimaryKeySelective(record);
+    }
+
+    @GetMapping("/getCommentByUserId")
+    public JsonResult getCommentByUserId(@RequestParam("userId") String userId, @RequestParam("currentPage")currentPage currentPage){
+
+
+        return commentsService.getCommentByUserId(userId,currentPage);
+
     }
 
 

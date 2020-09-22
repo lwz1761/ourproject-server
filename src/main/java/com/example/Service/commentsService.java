@@ -1,6 +1,11 @@
 package com.example.Service;
 
+import com.example.dto.JsonResult;
+import com.example.dto.commentsDto;
+import com.example.dto.currentPage;
 import com.example.entity.comments;
+
+import java.util.List;
 
 public interface commentsService {
 
@@ -17,4 +22,6 @@ public interface commentsService {
     int updateByPrimaryKeyWithBLOBs(comments record);
 
     int updateByPrimaryKey(comments record);
+
+    JsonResult getCommentByUserId(String userId, currentPage currentPage);
 }
