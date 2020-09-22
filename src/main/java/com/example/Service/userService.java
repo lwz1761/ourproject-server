@@ -1,6 +1,7 @@
 package com.example.Service;
 
 import com.example.dto.JsonResult;
+import com.example.dto.PageResult;
 import com.example.dto.currentPage;
 import com.example.dto.userQueryDTO;
 import com.example.entity.user;
@@ -20,6 +21,5 @@ public interface userService {
 
         int updateByPrimaryKey(user record);
 
-        JsonResult getUserList(userQueryDTO record);
-
+        PageResult<user> getUserList(userQueryDTO record);
 }

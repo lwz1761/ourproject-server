@@ -1,6 +1,7 @@
 package com.example.dao;
 
 
+import com.example.dto.PageResult;
 import com.example.dto.currentPage;
 import com.example.dto.userQueryDTO;
 import com.example.entity.user;

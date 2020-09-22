@@ -28,7 +28,7 @@ public class userServiceImp implements userService {
     }
 
     @Override
-    public JsonResult getUserList(userQueryDTO record) {
+    public PageResult<user> getUserList(userQueryDTO record) {
         //  判断参数是否有误
         if(record.getCurrentPage() <= 0){
             record.setCurrentPage(1);  //设置默认当前页
@@ -38,22 +38,14 @@ public class userServiceImp implements userService {
         }
 
         PageHelper.startPage(record.getCurrentPage(),record.getPageSize());
-
         List<user> userList = userMapper.getUserList(record);
 
         PageInfo<user> pageInfo = new PageInfo<>(userList);
-
-        PageResult<user> result = new PageResult<>();
-
+        PageResult<user> result = new PageResult<user>();
         result.setTotal((int)pageInfo.getTotal());
-
         result.setList(userList);
 
-        JsonResult jsonResult = new JsonResult(result);
-
-        jsonResult.setMessage("查询成功");
-
-        return jsonResult;
+        return result;
     }
 
     @Override
