@@ -7,10 +7,13 @@
     <result column="userID" jdbcType="VARCHAR" property="userid" />
     <result column="commentTime" jdbcType="TIMESTAMP" property="commenttime" />
     <result column="commentAudio" jdbcType="VARCHAR" property="commentaudio" />
+    <result column="commentLike" jdbcType="INTEGER" property="commentlike"/>
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.entity.comments">
     <result column="commentText" jdbcType="LONGVARCHAR" property="commenttext" />
   </resultMap>
+  <!--<resultMap id="commentDTOMap" type="com.example.dto.CommentDTO">-->
+  <!--</resultMap>-->
   <sql id="Base_Column_List">
     commentID, articleID, userID, commentTime, commentAudio
   </sql>
@@ -25,16 +28,29 @@
     from comments
     where commentID = #{commentid,jdbcType=VARCHAR}
   </select>
+
+  <!--zhou-文章详情页-热评前5-->
+  <select id="hotCommentList" parameterType="java.lang.String" resultType="com.example.dto.CommentDTO">
+    select user.userID,userName,regPhoto,commentText,commentTime,commentID,commentLike from comments , user where
+     articleID=#{articleID,jdbcType=VARCHAR} and comments.userID = `user`.userID  ORDER BY commentLike DESC limit 5
+  </select>
+  <!--zhou-文章详情-最新评论-->
+  <select id="newCommentList" parameterType="java.lang.String" resultType="com.example.dto.CommentDTO">
+    select user.userID,userName,regPhoto,commentText,commentTime,commentID,commentLike from comments , user
+     where articleID=#{articleID,jdbcType=VARCHAR} and comments.userID = `user`.userID ORDER BY commentTime DESC
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from comments
     where commentID = #{commentid,jdbcType=VARCHAR}
   </delete>
+
+  <!--zhou-添加评论-->
   <insert id="insert" parameterType="com.example.entity.comments">
     insert into comments (commentID, articleID, userID, 
-      commentTime, commentAudio, commentText
+      commentTime, commentLike, ,commentAudio,commentText
       )
-    values (#{commentid,jdbcType=VARCHAR}, #{articleid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR}, 
-      #{commenttime,jdbcType=TIMESTAMP}, #{commentaudio,jdbcType=VARCHAR}, #{commenttext,jdbcType=LONGVARCHAR}
+    values (#{commentid,jdbcType=VARCHAR}, #{articleid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
+      now(), #{commentlike,jdbcType=Integer}, #{commenttext,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.entity.comments">

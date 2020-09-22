@@ -1,8 +1,10 @@
 package com.example.dao;
 
+import com.example.dto.CommentDTO;
 import com.example.entity.comments;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 
 @Mapper
 public interface commentsMapper {
@@ -19,4 +21,9 @@ public interface commentsMapper {
     int updateByPrimaryKeyWithBLOBs(comments record);
 
     int updateByPrimaryKey(comments record);
+
+//    文章前五条热门评论
+    List<CommentDTO> hotCommentList(String record);
+//    文章最新评论
+    List<CommentDTO> newCommentList(String record);
 }

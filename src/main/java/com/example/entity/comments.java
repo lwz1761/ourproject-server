@@ -13,6 +13,8 @@ public class comments {
 
     private String commentaudio;
 
+    private int commentlike;
+
     private String commenttext;
 
     public String getCommentid() {
@@ -52,7 +54,15 @@ public class comments {
     }
 
     public void setCommentaudio(String commentaudio) {
-        this.commentaudio = commentaudio == null ? null : commentaudio.trim();
+        this.commentaudio = commentaudio;
+    }
+
+    public int getCommentlike() {
+        return commentlike;
+    }
+
+    public void setCommentlike(int commentlike) {
+        this.commentlike = commentlike;
     }
 
     public String getCommenttext() {
