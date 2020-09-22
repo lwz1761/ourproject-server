@@ -46,9 +46,12 @@ public class myController {
     }
 
     @GetMapping("/getCommentByUserId")
-    public JsonResult getCommentByUserId(@RequestParam("userId") String userId, @RequestParam("currentPage")currentPage currentPage){
+    public JsonResult getCommentByUserId(@RequestParam("userId") String userId, @RequestParam("currentPage")int currentPage, @RequestParam("pageSize")int pageSize){
 
-        return commentsService.getCommentByUserId(userId,currentPage);
+        currentPage currentPage1 = new currentPage();
+        currentPage1.setCurrentPage(currentPage);;
+        currentPage1.setPageSize(pageSize);
+        return commentsService.getCommentByUserId(userId,currentPage1);
 
     }
 }

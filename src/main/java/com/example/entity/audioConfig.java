@@ -3,13 +3,13 @@ package com.example.entity;
 public class audioConfig {
     private String userid;
 
-    private Integer ausetvol;
+    private int ausetvol;
 
-    private Integer ausetvoiper;
+    private int ausetvoiper;
 
-    private Integer ausetspd;
+    private int ausetspd;
 
-    private Integer ausetpit;
+    private int ausetpit;
 
     public String getUserid() {
         return userid;
@@ -19,35 +19,35 @@ public class audioConfig {
         this.userid = userid == null ? null : userid.trim();
     }
 
-    public Integer getAusetvol() {
+    public int getAusetvol() {
         return ausetvol;
     }
 
-    public void setAusetvol(Integer ausetvol) {
+    public void setAusetvol(int ausetvol) {
         this.ausetvol = ausetvol;
     }
 
-    public Integer getAusetvoiper() {
+    public int getAusetvoiper() {
         return ausetvoiper;
     }
 
-    public void setAusetvoiper(Integer ausetvoiper) {
+    public void setAusetvoiper(int ausetvoiper) {
         this.ausetvoiper = ausetvoiper;
     }
 
-    public Integer getAusetspd() {
+    public int getAusetspd() {
         return ausetspd;
     }
 
-    public void setAusetspd(Integer ausetspd) {
+    public void setAusetspd(int ausetspd) {
         this.ausetspd = ausetspd;
     }
 
-    public Integer getAusetpit() {
+    public int getAusetpit() {
         return ausetpit;
     }
 
-    public void setAusetpit(Integer ausetpit) {
+    public void setAusetpit(int ausetpit) {
         this.ausetpit = ausetpit;
     }
 }

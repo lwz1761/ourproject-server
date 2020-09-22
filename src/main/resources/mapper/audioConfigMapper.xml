@@ -8,7 +8,7 @@
     <result column="auSetSpd" jdbcType="INTEGER" property="ausetspd" />
     <result column="auSetPit" jdbcType="INTEGER" property="ausetpit" />
   </resultMap>
-  <select id="getConfigById" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="getConfigById" parameterType="java.lang.String" resultMap="com.example.entity.audioConfig">
     select userID, auSetVol, auSetVoiPer,
       auSetSpd, auSetPit
       from audio_config

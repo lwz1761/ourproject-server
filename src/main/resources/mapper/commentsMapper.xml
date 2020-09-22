@@ -47,10 +47,10 @@
   <!--zhou-添加评论-->
   <insert id="insert" parameterType="com.example.entity.comments">
     insert into comments (commentID, articleID, userID, 
-      commentTime, commentLike, ,commentAudio,commentText
+      commentTime, commentLike, commentAudio,commentText
       )
     values (#{commentid,jdbcType=VARCHAR}, #{articleid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
-      now(), #{commentlike,jdbcType=Integer}, #{commenttext,jdbcType=LONGVARCHAR}
+      now(), #{commentlike,jdbcType=INTEGER},#{commentAudio , jdbcType=VARCHAR}, #{commenttext,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.entity.comments">
