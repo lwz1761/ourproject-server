@@ -18,7 +18,7 @@
     commentID, articleID, userID, commentTime, commentAudio
   </sql>
   <sql id="Blob_Column_List">
-    commentText
+      commentText
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select 
@@ -134,4 +134,10 @@
       commentAudio = #{commentaudio,jdbcType=VARCHAR}
     where commentID = #{commentid,jdbcType=VARCHAR}
   </update>
+  <select id="getCommentByUserId" parameterType="java.lang.String"  resultType="com.example.dto.commentsDto">
+    select commentID as commentid, comments.articleID as articleid, comments.userID as userid, comments.commentTime as commenttime, postTitle as articlename, commentText as commenttext
+    from article,comments
+    where article.articleID = comments.articleID and comments.userID =#{userid,jdbcType=VARCHAR}
+
+  </select>
 </mapper>

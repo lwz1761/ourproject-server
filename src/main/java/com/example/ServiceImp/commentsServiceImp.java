@@ -3,8 +3,10 @@ package com.example.ServiceImp;
 import com.example.Service.commentsService;
 import com.example.config.Uuid;
 import com.example.dao.commentsMapper;
-import com.example.dto.CommentDTO;
+import com.example.dto.*;
 import com.example.entity.comments;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +54,27 @@ public class commentsServiceImp implements commentsService {
     @Override
     public int updateByPrimaryKey(comments record) {
         return 0;
+    }
+
+    @Override
+    public JsonResult getCommentByUserId(String userId, currentPage currentPage) {
+        PageHelper.startPage(currentPage.getCurrentPage(),currentPage.getPageSize());
+        List<commentsDto> commentsLists = mapper.getCommentByUserId(userId);
+
+        PageInfo<commentsDto> pageInfo = new PageInfo<>(commentsLists);
+
+        PageResult<commentsDto> result = new PageResult<>();
+
+        result.setTotal((int)pageInfo.getTotal());
+
+        result.setList(commentsLists);
+
+        JsonResult jsonResult = new JsonResult(result);
+
+        jsonResult.setMessage("查询成功");
+
+        return jsonResult;
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import com.example.dto.CommentDTO;
+import com.example.dto.commentsDto;
 import com.example.entity.comments;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -26,4 +27,6 @@ public interface commentsMapper {
     List<CommentDTO> hotCommentList(String record);
 //    文章最新评论
     List<CommentDTO> newCommentList(String record);
+
+    List<commentsDto> getCommentByUserId(String userId);
 }

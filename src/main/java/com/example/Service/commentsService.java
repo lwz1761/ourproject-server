@@ -1,6 +1,8 @@
 package com.example.Service;
 
 import com.example.dto.CommentDTO;
+import com.example.dto.JsonResult;
+import com.example.dto.currentPage;
 import com.example.entity.comments;
 
 import java.util.List;
@@ -25,4 +27,6 @@ public interface commentsService {
     List<CommentDTO> hotCommentList(String record);
     //    文章最新评论
     List<CommentDTO> newCommentList(String record);
+
+    JsonResult getCommentByUserId(String userId, currentPage currentPage);
 }
