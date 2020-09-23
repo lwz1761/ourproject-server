@@ -6,6 +6,9 @@ import com.example.dto.currentPage;
 import com.example.dto.userQueryDTO;
 import com.example.entity.user;
 
+import java.util.List;
+import java.util.Map;
+
 
 public interface userService {
 
@@ -22,4 +25,7 @@ public interface userService {
         int updateByPrimaryKey(user record);
 
         PageResult<user> getUserList(userQueryDTO record);
+
+        List<user> selectByUserName(Map<String,String> map);//判断用户名重复
+
 }
