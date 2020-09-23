@@ -130,9 +130,9 @@
   <select id="getUserList" parameterType="com.example.dto.userQueryDTO"  resultType="com.example.entity.user">
     select
     <include refid="Base_Column_List" />
-    from user where user.userID != 0
+    from user
     <if test="userName != null">
-      and userName like CONCAT(CONCAT('%',#{userName,jdbcType=VARCHAR},'%'))
+      where userName like CONCAT(CONCAT('%',#{userName,jdbcType=VARCHAR},'%'))
     </if>
     order by userID
   </select>
