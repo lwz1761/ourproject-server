@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -59,13 +60,25 @@ public class userServiceImp implements userService {
     }
 
     @Override
-    public user selectByPrimaryKey(String id) {
-        return userMapper.selectByPrimaryKey(id);
+    public user selectByPrimaryKey(String id) {//初始化
+        System.out.println("laile");
+        user user = userMapper.selectByPrimaryKey(id);
+        //System.out.println(user.getAdmin());
+        return user;
     }
 
     @Override
-    public int updateByPrimaryKeySelective(user record) {
-        return userMapper.updateByPrimaryKeySelective(record);
+    public List<user> selectByUserName(Map<String,String> map) {//判断用户名重复
+        List<user> user = userMapper.selectByUserName(map);
+        return user;
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(user record) {//更新
+        System.out.println(record.getUserID());
+        System.out.println(record.getUserName());
+        userMapper.updateByPrimaryKeySelective(record);
+        return 0;
     }
 
     @Override
