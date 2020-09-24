@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class article {
@@ -13,6 +15,7 @@ public class article {
 
     private String postaudio;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:SS",timezone = "GMT+8")
     private Date posttime;
 
     private String postcom;
