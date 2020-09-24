@@ -1,6 +1,7 @@
 package com.example.dao;
 
 
+import com.example.dto.articleDetailsDTO;
 import com.example.entity.article;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,9 +15,10 @@ public interface ArticlesMapper {
 
     void deleteArticle(String id);
 
-
     article findArticlxeById(String id);
 
     void updateArticleById(article article);
 
+    //    zhou-文章详情-得到文章信息
+    articleDetailsDTO getArticleDetailsByID(String articleID);
 }
