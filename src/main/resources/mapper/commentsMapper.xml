@@ -50,7 +50,7 @@
       commentTime, commentLike, commentAudio,commentText
       )
     values (#{commentid,jdbcType=VARCHAR}, #{articleid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR},
-      now(), #{commentlike,jdbcType=INTEGER},#{commentAudio , jdbcType=VARCHAR}, #{commenttext,jdbcType=LONGVARCHAR}
+      now(), #{commentlike,jdbcType=INTEGER},#{commentaudio , jdbcType=VARCHAR}, #{commenttext,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.entity.comments">

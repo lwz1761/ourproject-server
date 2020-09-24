@@ -26,6 +26,10 @@
         select * from article where articleID = #{id}
     </select>
 
+    <!--zhou-文章详情页-得到文章详情-->
+    <select id="getArticleDetailsByID" parameterType="java.lang.String" resultType="com.example.dto.articleDetailsDTO">
+        select postTitle,userName,postText,postTime,articleID,article.articleID from article,`user` where articleID=#{articleID} and article.userID = `user`.userID
+    </select>
     <update id="updateArticleById" parameterType="com.example.entity.article">
         update article
         <set>

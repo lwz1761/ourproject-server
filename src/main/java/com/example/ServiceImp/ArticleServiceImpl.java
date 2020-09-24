@@ -4,6 +4,7 @@ import com.example.Service.ArticleService;
 import com.example.dao.ArticlesMapper;
 import com.example.dto.JsonResult;
 import com.example.dto.PageResult;
+import com.example.dto.articleDetailsDTO;
 import com.example.dto.userQueryDTO;
 import com.example.entity.article;
 import com.github.pagehelper.Page;
@@ -103,5 +104,10 @@ public class ArticleServiceImpl implements ArticleService {
             e.printStackTrace();
             return new JsonResult(500,"修改失败");
         }
+    }
+
+    @Override
+    public articleDetailsDTO getArticleDetailsByID(String articleID) {
+        return articlesMapper.getArticleDetailsByID(articleID);
     }
 }

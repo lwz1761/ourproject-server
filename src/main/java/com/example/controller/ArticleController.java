@@ -56,4 +56,18 @@ public class ArticleController {
     public JsonResult updateArticleById(@RequestBody article article){
         return articleService.updateArticleById(article);
     }
+
+//    zhou-文章详情页
+    @GetMapping("/getArticleDetailsByID")
+    public JsonResult getArticleDetailsByID(String articleID){
+        JsonResult jsonResult = new JsonResult(articleService.getArticleDetailsByID(articleID));
+        if(jsonResult==null){
+            jsonResult.setMessage("获取文章详情失败");
+            jsonResult.setCode(500);
+        }else{
+            jsonResult.setMessage("获取文章详情成功");
+            jsonResult.setCode(200);
+        }
+        return jsonResult;
+    }
 }
