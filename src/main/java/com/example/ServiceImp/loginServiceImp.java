@@ -23,4 +23,8 @@ public class loginServiceImp implements loginService {
 
         return 0;
     }
+    public int rigster(user user){
+        int result =loginMapper.rigster(user);
+        return result;
+    }
 }

@@ -23,6 +23,15 @@ public class LoginController {
         int user1=loginService.Login(user.getUserName(),user.getPassword());
         return user1;
     }
+    @PostMapping("/Rigster")
+    @ResponseBody
+    public int rigster(@RequestBody user user){
+
+        System.out.println(user.toString());
+        int user1=loginService.rigster(user);
+        System.out.println("use1");
+        return user1;
+    }
     @RequestMapping("/Login1")
     @ResponseBody
     public String Login(){

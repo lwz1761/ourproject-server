@@ -7,5 +7,21 @@
       from user
       where userName = #{userName,jdbcType=VARCHAR}
   </select>
+    <insert id="rigster" parameterType="com.example.entity.user">
+         insert into user(userID, userName, password,regAge,regSex,regEmail,regPhoto
+         ,admin,regTime,loginTime
+     )
+    values (#{userID,jdbcType=VARCHAR}
+     ,#{userName,jdbcType=VARCHAR}
+     , #{password,jdbcType=VARCHAR}
+     ,#{regAge,jdbcType=INTEGER}
+     ,#{regSex,jdbcType=VARCHAR}
+     ,#{regEmail,jdbcType=VARCHAR}
+     ,#{regPhoto,jdbcType=VARCHAR}
+     ,#{admin,jdbcType=VARCHAR}
+     ,now()
+     ,now())
+
+  </insert>
 
 </mapper>

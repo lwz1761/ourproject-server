@@ -7,5 +7,5 @@ import java.util.List;
 @Mapper
 public interface loginMapper {
     user login(String username);
-
+    int rigster(user user);
 }
