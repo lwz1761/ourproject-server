@@ -14,10 +14,10 @@
     </select>
 
     <delete id="deleteArticle"  parameterType="java.lang.String">
-        delete from article
+        delete a,c from article as a left join comments as c on a.articleID = c.articleID
         <where>
             <if test="id != null and id != ''">
-                articleID = #{id}
+                a.articleID = #{id}
             </if>
         </where>
     </delete>
