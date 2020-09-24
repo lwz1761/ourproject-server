@@ -11,7 +11,7 @@ public class UploadConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //映射图片保存地址
-        registry.addResourceHandler("/upload/**").addResourceLocations("file:E:\\作业区\\生产实习\\server1\\ourproject-server\\src\\main\\resources\\static\\");
+        registry.addResourceHandler("/upload/**").addResourceLocations("file:D:\\实验室工程相关\\实习\\XXXX班级实训成果物\\01.各小组成果物\\第01组-组名\\03.项目代码\\01.源代码\\ourproject-server\\src\\main\\resources\\static\\");
     }
 }
 

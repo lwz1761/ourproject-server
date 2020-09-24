@@ -28,7 +28,7 @@ public class UploadController {
         String fileName = file.getOriginalFilename();
 
         //头像保存地址
-        String filePath = "E:\\作业区\\生产实习\\server1\\ourproject-server\\src\\main\\resources\\static\\";
+        String filePath = "D:\\实验室工程相关\\实习\\XXXX班级实训成果物\\01.各小组成果物\\第01组-组名\\03.项目代码\\01.源代码\\ourproject-server\\src\\main\\resources\\static\\";
         File dest = new File(filePath + fileName);
         try {
             file.transferTo(dest);
