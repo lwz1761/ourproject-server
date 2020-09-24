@@ -16,12 +16,12 @@ public class LoginController {
     @Autowired(required = false)
     loginService  loginService;
 
-    @RequestMapping("/Login")
+    @PostMapping("/Login")
     @ResponseBody
-    public int Login(String username, String password){
-        System.out.println(username+"   "+ password);
-        int user=loginService.Login(username,password);
-        return user;
+    public int Login(@RequestBody user user){
+        System.out.println(user.getUserName()+"   "+ user.getPassword());
+        int user1=loginService.Login(user.getUserName(),user.getPassword());
+        return user1;
     }
     @RequestMapping("/Login1")
     @ResponseBody
